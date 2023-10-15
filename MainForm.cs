@@ -252,7 +252,33 @@ namespace Salary4Zhen
         */
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("TODO");  
+         //   MessageBox.Show("TODO");
+            string strWeb = "http://wx.ymiot.net/dwz?tk=pbdgd9qh&tc=158002148{0}";
+            //  string invalid = "https://alipay.ymiot.net/SysMsg/?type=2&message=%E4%BC%98%E6%83%A0%E5%88%B8%E6%97%A0%E6%95%88%E6%88%96%E5%B7%B2%E8%BF%87%E6%9C%9F";
+            string strValid = "/Coupon/CouponReceive";
+            long startNo = 3084845056, endNo = 3698969088; 
+            HttpWebRequest LoginReq;
+            HttpWebResponse LoginRes;
+            string strAddress;
+            try
+            {
+                do
+                {
+                    startNo += 65536;
+                    txtNo.Text = startNo.ToString();
+                    txtNo.Refresh();
+                    LoginReq = (HttpWebRequest)WebRequest.Create(string.Format(strWeb, startNo));
+                    LoginRes = (HttpWebResponse)LoginReq.GetResponse();
+                    strAddress = LoginReq.Address.AbsolutePath;
+                    LoginRes.Close();
+                } while (strAddress != strValid && startNo <= endNo);
+                MessageBox.Show(txtNo.Text);
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -287,12 +313,12 @@ namespace Salary4Zhen
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
+        {/*
             RegistryKey R_local = Registry.CurrentUser;
             RegistryKey R_run = R_local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
             R_run.SetValue("Salary4Zhen", Application.ExecutablePath); 
             R_run.Close();
-            R_local.Close();
+            R_local.Close*/
            // if (Environment.UserName != strUserName)
             strUserName = Environment.UserName;
             //CheckYaka();

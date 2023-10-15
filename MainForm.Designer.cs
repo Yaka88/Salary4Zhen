@@ -39,6 +39,7 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.radioHang = new System.Windows.Forms.RadioButton();
             this.radioHuzhou = new System.Windows.Forms.RadioButton();
+            this.txtNo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listMonth
@@ -147,12 +148,21 @@
             this.radioHuzhou.UseVisualStyleBackColor = true;
             this.radioHuzhou.CheckedChanged += new System.EventHandler(this.listMonth_SelectedValueChanged);
             // 
+            // txtNo
+            // 
+            this.txtNo.Location = new System.Drawing.Point(477, 135);
+            this.txtNo.Name = "txtNo";
+            this.txtNo.ReadOnly = true;
+            this.txtNo.Size = new System.Drawing.Size(121, 26);
+            this.txtNo.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 483);
             this.ControlBox = false;
+            this.Controls.Add(this.txtNo);
             this.Controls.Add(this.radioHuzhou);
             this.Controls.Add(this.radioHang);
             this.Controls.Add(this.btnImport);
@@ -184,6 +194,7 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.RadioButton radioHang;
         private System.Windows.Forms.RadioButton radioHuzhou;
+        private System.Windows.Forms.TextBox txtNo;
     }
 }
 
